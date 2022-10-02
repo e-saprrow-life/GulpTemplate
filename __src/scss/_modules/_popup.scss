@@ -1,0 +1,113 @@
+//= Popups===============================================================================
+$bg: #111111e2;     // Цвет фона
+$zi: 150;             // z-index 
+$cs: 25px;            // Размер кнопки закрытия
+$an: 1;               // Анимация открытия 0 - нет, 1 - да | не работает если контент попапа не выходит за границы экрана
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: $bg;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity $transition, visibility $transition_delay;
+    z-index: $zi;
+
+    .container {
+        height: 100%;
+    }
+
+    &__inner {
+        height: 100%;
+        display: flex;
+    }
+
+    &__body {
+        position: relative;
+        overflow-y: scroll;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @if $an == 0 {
+            padding: 50px 0 50px 0;
+        }
+        @if $an == 1 {
+            padding: 0px;
+            transition: padding $transition_delay;  
+        }
+        &::-webkit-scrollbar {  // Панель прокрутки
+            width: 0px;
+        }
+    }
+
+    &__btn-close {
+        position: absolute;
+        display: block;
+        height: 25px;
+        width: 25px;
+        top: 8px;
+        right: 8px;
+        background-color: transparent;
+        cursor: pointer;
+        z-index: 150;
+        &:hover {
+            transform: scale(1.1);
+            transition: $transition;
+        }
+        &:before, &:after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            position: absolute;
+            top: 50%;
+            backdrop-filter: invert(100%);
+        }
+        &:before {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        &:after {
+            transform: translateY(-50%) rotate(-45deg);
+        }
+    }
+}
+
+.popup._open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $transition, visibility 0s ease 0s;
+    .popup__body {
+        @if $an == 1 {
+            padding: 50px 0 50px 0;
+            transition: padding 0.8s ease 0s;
+        }
+    }
+}
+
+
+
+.privacy {
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    padding: 30px;
+    max-width: 750px;
+    background-color: #fff;
+    // .privacy__title
+    &__title {
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-size: 24px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #000;
+    }
+    // .privacy__content
+    &__content {
+        text-align: justify;
+    }
+}

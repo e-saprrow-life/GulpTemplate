@@ -1,0 +1,23 @@
+
+// SCSS Классы
+
+// Используются в качестве готовых шаблонов scss стилей
+// Создание класса %className {...}
+// Использование класса @extend %className;
+// Сниппет: 
+
+
+
+// Изображение на весь размер и перекрыть
+%image_full_cover {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+// Изображение на весь размер и замостить
+%image_full_contain {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}

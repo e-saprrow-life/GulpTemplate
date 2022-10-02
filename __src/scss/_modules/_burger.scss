@@ -1,0 +1,69 @@
+//= Кнопка бургера
+$burger_color: black;
+.burger {
+    flex: 0 0 auto;
+    display: block;
+    position: relative;
+    height: 25px;
+    width: 33px;
+    z-index: 205;
+    @media (min-width: $md2 + px){
+        display: none;
+    }
+    
+    span {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $burger_color;
+    }
+
+    span:nth-child(1) {
+        top: 0%;
+        transform: rotate(0deg);
+        transition: transform $transition, 
+                    top $transition_delay;
+    }
+
+    span:nth-child(2) {
+        top: calc(50% + 1px);
+        transform: translateY(-2px);
+        opacity: 1;
+        transition: opacity $transition_delay;
+    }
+
+    span:nth-child(3) {
+        top: 100%;
+        transform: rotate(0deg) translateY(-100%);
+        transition: transform $transition, 
+                    top $transition_delay;
+    }
+}
+
+
+
+
+
+.burger._open {
+
+    span:nth-child(1) {
+        top: 50%;
+        transform: rotate(45deg);
+        transition: top $transition, 
+                    transform $transition_delay;
+    }
+
+    span:nth-child(2) {
+        top: 50%;
+        opacity: 0;
+        transition: opacity $transition;
+    }
+
+    span:nth-child(3) {
+        top: 50%;
+        transform: rotate(-45deg);
+        transition: top $transition, 
+                    transform $transition_delay;
+    }
+}

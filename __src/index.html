@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk-UA">
+<head>
+    @@include('html/_head.html',{
+        'title':'New Gulp Project'
+    })
+</head>
+<body>
+    <!-- WRAPPER -->
+    <div class="wrapper">
+        @@include('html/_header.html')
+        <main class="page">
+            
+        </main>
+        @@include('html/_footer.html')
+    </div>
+    @@include('html/_modules/_popups.html')
+    @@include('html/_svg.html')
+    <!-- SCRIPTS -->
+    <script src="@js/script.js"></script>
+    <script src="@js/wow.js"></script>
+    <script>
+        new WOW().init()
+    </script>
+</body>
+</html>

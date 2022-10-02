@@ -1,0 +1,69 @@
+html {
+    font-size: $defaulFontSize;
+    scroll-behavior: smooth;
+}
+
+
+body { 
+    font-family: $ff1;
+    line-height: $defaulLineHeight;
+    color: $defaultTextColor;
+    &._lock {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: $minWidth + px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+header, footer {
+    flex: 0 0 auto;
+}
+
+
+main {
+    flex: 1 1 auto;
+}
+
+// Будет применяться ко всем элементам в имени класса
+// которого будет присутствовать __container - header__container, sb_container...
+[class*="__container"] {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    max-width: $containerMaxWidth + ($containerPadding * 2) + px;
+    padding: 0 $containerPadding + px;
+    @media (max-width: $md1 + px) {
+        max-width: 970px;
+    }
+    @media (max-width: $md2 + px) {
+        max-width: 750px;
+    }
+    @media (max-width: $md3 + px) {
+        max-width: none;
+        padding: 0 $containerPadding + px;
+    }
+}
+
+//==============================================================================================
+// Разные блоки и конструкции
+
+// Блок с спрайтами. (Всегда скрыт)
+.svg-sprites-pack {
+    position: fixed;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    transition: translateY(-1000%);
+}
